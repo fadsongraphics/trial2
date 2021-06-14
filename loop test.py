@@ -360,7 +360,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj34.play()
-      time.sleep(2)
+      time.sleep(5)
 
       text += f'{quantity[0]} {currency[0]}'
 
@@ -463,7 +463,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj8.play()
-    time.sleep(2)
+    time.sleep(5)
 
 
   elif intent == 'Compliment':
@@ -499,7 +499,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj12.play()
-    time.sleep(2)
+    time.sleep(5)
 
 
   elif intent == 'Language':
@@ -508,7 +508,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj13.play()
-    time.sleep(2)
+    time.sleep(5)
 
 
   elif intent == 'Boss':
@@ -590,7 +590,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj20.play()
-    time.sleep(2)
+    time.sleep(5)
 
       
   elif intent == 'Utilities_Start_Service':
@@ -599,7 +599,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj20.play()
-    time.sleep(2)
+    time.sleep(5)
       
   elif intent == 'Utilities_Stop_Service':
     filename = '20.wav'
@@ -607,7 +607,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj20.play()
-    time.sleep(2)
+    time.sleep(5)
       
   else:
 
