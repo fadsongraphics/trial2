@@ -481,7 +481,7 @@ def intent2action(intent):
 
 def speakword(text):
 
-  if text !=='':
+  if text !='':
     engine = pyttsx3.init()
     voices = engine.getProperty('voices')
     engine.setProperty('voice', voices[1].id)
