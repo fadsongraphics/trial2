@@ -603,7 +603,7 @@ try:
 
                                 if adeus_reply.startswith('Which device do you'):
                                     
-                                    # speakword(adeus_reply)
+                                    speakword(adeus_reply)
                                     q.queue.clear()
                                     time.sleep(2)
                                     while True: 
@@ -630,7 +630,7 @@ try:
                                         
                                         
                                 elif adeus_reply.startswith('How many kilowatts'):
-                                    # speakword(adeus_reply)
+                                    speakword(adeus_reply)
                                     q.queue.clear()
                                     time.sleep(2)
                                     while True:
@@ -658,7 +658,7 @@ try:
                                                 q.queue.clear()
                                                 
                                 elif adeus_reply.startswith('For which period'):
-                                    # speakword(adeus_reply)
+                                    speakword(adeus_reply)
                                     q.queue.clear()
                                     while True:          
                                         data = q.get()
@@ -678,7 +678,7 @@ try:
                                                         
                                                         
                                 else:
-                                    # speakword(adeus_reply)
+                                    speakword(adeus_reply)
                                     q.queue.clear()
 
                             if ("thank you" in jres["text"]) or ("bye" in jres["text"]):
