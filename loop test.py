@@ -390,6 +390,8 @@ def intent2action(intent):
       status = sd.wait()
       soundObj4.play()
       time.sleep(2)
+      
+   
 
   elif intent == 'Utilities_View_Usage':
     if period:
@@ -404,8 +406,10 @@ def intent2action(intent):
       status = sd.wait()
       soundObj36.play()
       time.sleep(2)
+      
 
       text += f'{period[0]}'
+      
 
       filename = '24.wav'
       data, fs = sf.read(filename, dtype='float32')
@@ -413,8 +417,11 @@ def intent2action(intent):
       status = sd.wait()
       soundObj24.play()
       time.sleep(2)
+     
 
       text += f'{usage}'
+
+      
 
 
 
@@ -449,6 +456,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj6.play()
     time.sleep(2)
+    t="Sure how can I be of help?"
 
   elif intent == 'Bored':
     filename = '7.wav'
@@ -457,6 +465,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj7.play()
     time.sleep(2)
+    t="So sorry about that"
 
   elif intent == 'Love':
     filename = '8.wav'
@@ -465,6 +474,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj8.play()
     time.sleep(5)
+    t="I'm happy being single. the upside is I get to focus on managing your Energy"
 
 
   elif intent == 'Compliment':
@@ -474,6 +484,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj9.play()
     time.sleep(2)
+    t="Oh!, thank you. i'm blushing right now!."
 
   
   elif intent == 'Hobby':
@@ -483,6 +494,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj10.play()
     time.sleep(2)
+    t="I love to help you manage your energy"
 
 
   elif intent == 'get_personal':
@@ -492,6 +504,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj11.play()
     time.sleep(2)
+    t="I,m your energy concierge!"
 
 
   elif intent == 'Pissed':
@@ -501,6 +514,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj12.play()
     time.sleep(5)
+    t="sorry!, boss!!"
 
 
   elif intent == 'Language':
@@ -510,6 +524,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj13.play()
     time.sleep(5)
+    t="I speak English. Visit your language settings to change"
 
 
   elif intent == 'Boss':
@@ -519,6 +534,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj14.play()
     time.sleep(2)
+    t="I was made by Robotics & Artificial Intelligence Nigeria."
     
 
 
@@ -529,6 +545,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj15.play()
     time.sleep(2)
+    t="I learn everyday!"
 
 
 
@@ -539,6 +556,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj16.play()
     time.sleep(2)
+    t="I'm always happy to help!"
 
 
   #elif intent == 'know_weather':
@@ -563,6 +581,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj17.play()
     time.sleep(2)
+    t="I'm happy I was able to help"
 
     
   elif intent == 'Ask_question':
@@ -573,6 +592,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj18.play()
     time.sleep(2)
+    t="Sure how can I help?"
 
     
   elif intent == 'greeting':
@@ -583,6 +603,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObj19.play()
     time.sleep(2)
+    t="Hey! How may I be of assistance?"
 
       
   elif intent == 'Utilities_Report_Outage':
@@ -592,6 +613,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObjb.play()
     time.sleep(7)
+    t="Our team will respond, to your request! as soon as possible."
 
       
   elif intent == 'Utilities_Start_Service':
@@ -601,6 +623,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObjb.play()
     time.sleep(7)
+    t="Our team will respond, to your request! as soon as possible."
       
   elif intent == 'Utilities_Stop_Service':
     filename = '20.wav'
@@ -609,6 +632,7 @@ def intent2action(intent):
     status = sd.wait()
     soundObjb.play()
     time.sleep(7)
+    t="Our team will respond, to your request! as soon as possible."
       
   else:
 
@@ -616,7 +640,8 @@ def intent2action(intent):
     status = sd.wait()
     soundObjb.play()
     time.sleep(2)
-    
+
+
   return text
       
 
@@ -731,102 +756,105 @@ try:
                         
                         
                         while not_done_with_Q:
-                            print (jres) 
+                             
                             data= q.get()
                             if rec.AcceptWaveform(data):
                                 jres = json.loads((rec.Result()))
-                                
+                                print (jres)    
                            
-                        
-                                finaltext= wordtodigits.convert((jres["text"]))
-                                user_intent = get_intent(finaltext)
-                                adeus_reply = intent2action(user_intent)
-                                print(adeus_reply)
-                                print (finaltext)
-                                # f = open("stt.txt","w")
-                                f = open("/var/www/stt.txt","w")
-                                f.write(finaltext)
-                                f.close()
+                                if jres['text'] != '':
+                                  finaltext= wordtodigits.convert((jres["text"]))
+                                  user_intent = get_intent(finaltext)
+                                  adeus_reply = intent2action(user_intent)
+                                  print(adeus_reply)
 
-                                if adeus_reply.startswith('Which device do you'):
-                                    
-                                    speakword(adeus_reply)
-                                    q.queue.clear()
-                                    time.sleep(2)
-                                    while True: 
-                                        data = q.get()
-                                        if rec.AcceptWaveform(data):
-                                            jres = json.loads(rec.Result())
-                                            finaltext = wordtodigits.convert(jres["text"])
-                                            print(jres["text"])
-                                            device_check = any(appliance in finaltext.lower() for appliance in appliances)
-                                            if device_check:
-                                                device =list(set(appliances).intersection(set(finaltext.split())))
-                                                print(device)
-                                                adeus_reply= intent2action(user_intent)
-                                                speakword(adeus_reply)
-                                                q.queue.clear()
-                                                break
-                                            
-                                        
-                                            else:
-                                                speakword("please respond with a device name")
-                                                q.queue.clear()
-                                            
-                                    
-                                        
-                                        
-                                elif adeus_reply.startswith('How many kilowatts'):
-                                    speakword(adeus_reply)
-                                    q.queue.clear()
-                                    time.sleep(2)
-                                    while True:
-                                        data = q.get()
-                                        if rec.AcceptWaveform(data):
-                                            jres = json.loads(rec.Result())
-                                            print(jres["text"])
-                                            finaltext = wordtodigits.convert(jres["text"])
-                                            quantity = list (map(int, re.findall(r'\d+', finaltext)))
-                                            currency_check  = any(currency in finaltext.lower() for currency in currencies)
-                                            if currency_check and quantity:
-                                                currency = list(set(currencies).intersection(set(finaltext.split())))
-                                                adeus_reply = intent2action(user_intent)
-                                                speakword(adeus_reply)
-                                                q.queue.clear()
-                                                break
-                                            elif quantity:
-                                                adeus_reply = intent2action(user_intent)
-                                                print(user_intent)
-                                                speakword(adeus_reply)
-                                                q.queue.clear()
-                                                break
-                                            else:
-                                                speakword("please respond with how much energy you need")
-                                                q.queue.clear()
-                                                
-                                elif adeus_reply.startswith('For which period'):
-                                    speakword(adeus_reply)
-                                    q.queue.clear()
-                                    while True:          
-                                        data = q.get()
-                                        rec.AcceptWaveform(data)
-                                        jres = json.loads(rec.Result())
-                                        finaltext = wordtodigits.convert(jres["text"])
-                                        quantity = list (map(int, re.findall(r'\d+', finaltext)))
-                                        period_check  = any(time in finaltext.lower() for time in times)
-                                        if period_check:
-                                            period = list(set(times).intersection(set(finaltext.split())))
-                                            adeus_reply = intent2action(user_intent)
-                                            speakword(adeus_reply)
-                                            q.queue.clear()
-                                            break
-                                        else:
-                                            speakword("please respond with the period you want ")
-                                                        
-                                                        
-                                else:
-                                    speakword(adeus_reply)
-                                    q.queue.clear()
+                                  f = open("nlp_q.txt","w")
+                                  f.write(jres['text'])
+                                  f.close()
+
+                                  f2 = open("nlp_r.txt","w")
+                                  f2.write(adeus_reply)
+                                  f2.close()
+
+                                  if adeus_reply.startswith('Which device do you'):
+                                      
+                                      speakword(adeus_reply)
+                                      q.queue.clear()
+                                      time.sleep(2)
+                                      while True: 
+                                          data = q.get()
+                                          if rec.AcceptWaveform(data):
+                                              jres = json.loads(rec.Result())
+                                              finaltext = wordtodigits.convert(jres["text"])
+                                              print(jres["text"])
+                                              device_check = any(appliance in finaltext.lower() for appliance in appliances)
+                                              if device_check:
+                                                  device =list(set(appliances).intersection(set(finaltext.split())))
+                                                  print(device)
+                                                  adeus_reply= intent2action(user_intent)
+                                                  speakword(adeus_reply)
+                                                  q.queue.clear()
+                                                  break
+                                              
+                                          
+                                              else:
+                                                  speakword("please respond with a device name")
+                                                  q.queue.clear()
+                                              
+                                      
+                                          
+                                          
+                                  elif adeus_reply.startswith('How many kilowatts'):
+                                      speakword(adeus_reply)
+                                      q.queue.clear()
+                                      time.sleep(2)
+                                      while True:
+                                          data = q.get()
+                                          if rec.AcceptWaveform(data):
+                                              jres = json.loads(rec.Result())
+                                              print(jres["text"])
+                                              finaltext = wordtodigits.convert(jres["text"])
+                                              quantity = list (map(int, re.findall(r'\d+', finaltext)))
+                                              currency_check  = any(currency in finaltext.lower() for currency in currencies)
+                                              if currency_check and quantity:
+                                                  currency = list(set(currencies).intersection(set(finaltext.split())))
+                                                  adeus_reply = intent2action(user_intent)
+                                                  speakword(adeus_reply)
+                                                  q.queue.clear()
+                                                  break
+                                              elif quantity:
+                                                  adeus_reply = intent2action(user_intent)
+                                                  print(user_intent)
+                                                  speakword(adeus_reply)
+                                                  q.queue.clear()
+                                                  break
+                                              else:
+                                                  speakword("please respond with how much energy you need")
+                                                  q.queue.clear()
+                                                  
+                                  elif adeus_reply.startswith('For which period'):
+                                      speakword(adeus_reply)
+                                      q.queue.clear()
+                                      while True:          
+                                          data = q.get()
+                                          rec.AcceptWaveform(data)
+                                          jres = json.loads(rec.Result())
+                                          finaltext = wordtodigits.convert(jres["text"])
+                                          quantity = list (map(int, re.findall(r'\d+', finaltext)))
+                                          period_check  = any(time in finaltext.lower() for time in times)
+                                          if period_check:
+                                              period = list(set(times).intersection(set(finaltext.split())))
+                                              adeus_reply = intent2action(user_intent)
+                                              speakword(adeus_reply)
+                                              q.queue.clear()
+                                              break
+                                          else:
+                                              speakword("please respond with the period you want ")
+                                                          
+                                                          
+                                  else:
+                                      speakword(adeus_reply)
+                                      q.queue.clear()
 
                             if ("thank you" in jres["text"]) or ("bye" in jres["text"]):
                                 # address = fr"http://localhost/nlp/vivian.php?trigger=false"
