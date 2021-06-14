@@ -584,30 +584,30 @@ def intent2action(intent):
     time.sleep(2)
 
       
-  elif intent == 'Utilities_Report_Outage':
-    filename = '20.wav'
-    data, fs = sf.read(filename, dtype='float32')
-    #sd.play(data, fs)
-    status = sd.wait()
-    soundObj20.play()
-    time.sleep(7)
+  # elif intent == 'Utilities_Report_Outage':
+  #   filename = '20.wav'
+  #   data, fs = sf.read(filename, dtype='float32')
+  #   #sd.play(data, fs)
+  #   status = sd.wait()
+  #   soundObj20.play()
+  #   time.sleep(7)
 
       
-  elif intent == 'Utilities_Start_Service':
-    filename = '20.wav'
-    data, fs = sf.read(filename, dtype='float32')
-    #sd.play(data, fs)
-    status = sd.wait()
-    soundObj20.play()
-    time.sleep(7)
+  # elif intent == 'Utilities_Start_Service':
+  #   filename = '20.wav'
+  #   data, fs = sf.read(filename, dtype='float32')
+  #   #sd.play(data, fs)
+  #   status = sd.wait()
+  #   soundObj20.play()
+  #   time.sleep(7)
       
-  elif intent == 'Utilities_Stop_Service':
-    filename = '20.wav'
-    data, fs = sf.read(filename, dtype='float32')
-    #sd.play(data, fs)
-    status = sd.wait()
-    soundObj20.play()
-    time.sleep(7)
+  # elif intent == 'Utilities_Stop_Service':
+  #   filename = '20.wav'
+  #   data, fs = sf.read(filename, dtype='float32')
+  #   #sd.play(data, fs)
+  #   status = sd.wait()
+  #   soundObj20.play()
+  #   time.sleep(7)
       
   else:
 
