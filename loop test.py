@@ -134,11 +134,17 @@ def intent2action(intent):
           data, fs = sf.read(filename, dtype='float32')
           #sd.play(data, fs)
           status = sd.wait()
+          soundObj21.play()
+          time.sleep(2)
+          
           text += f'{d}'
+
           filename = '22.wav'
           data, fs = sf.read(filename, dtype='float32')
           #sd.play(data, fs)
           status = sd.wait()
+          soundObj22.play()
+          time.sleep(2)
           text += f'{rerfsponse}'
 
     else:
@@ -147,6 +153,7 @@ def intent2action(intent):
       data, fs = sf.read(filename, dtype='float32')
       #sd.play(data, fs)
       status = sd.wait()
+      time.sleep(2)
 
   elif intent == 'Utilities_Device_Usage':
 
@@ -163,6 +170,7 @@ def intent2action(intent):
         #sd.play(data, fs)
         status = sd.wait()
         soundObj21.play()
+        time.sleep(2)
 
         text += f'.{d}.'
 
@@ -171,6 +179,7 @@ def intent2action(intent):
         #sd.play(data, fs)
         status = sd.wait()
         soundObj23.play()
+        time.sleep(2)
 
         text += f'.{period}.'
 
@@ -179,6 +188,7 @@ def intent2action(intent):
         #sd.play(data, fs)
         status = sd.wait()
         soundObj24.play()
+        time.sleep(2)
 
         text += f'.{usage}.'
 
@@ -187,6 +197,7 @@ def intent2action(intent):
         #sd.play(data, fs)
         status = sd.wait()
         soundObj25.play()
+        time.sleep(2)
 
 
 
@@ -201,6 +212,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj39.play()
+      time.sleep(2)
 
       text += f'.{usage}.'
 
@@ -210,6 +222,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj1.play()
+      time.sleep(2)
         
 
   elif intent == 'Turn_off_device':
@@ -224,6 +237,7 @@ def intent2action(intent):
         #sd.play(data, fs)
         status = sd.wait()
         soundObj26.play()
+        time.sleep(2)
 
         text += f'.{d}.'
 
@@ -233,6 +247,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj2.play()
+      time.sleep(2)
 
   elif intent == 'Turn_on_device':
     if device:
@@ -246,6 +261,7 @@ def intent2action(intent):
         #sd.play(data, fs)
         status = sd.wait()
         soundObj27.play()
+        time.sleep(2)
 
         text += f'.{d}.'
     else:
@@ -254,6 +270,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj3.play()
+      time.sleep(2)
 
   elif intent == 'Utilities_Energy_Balance':
       address = fr"http://localhost/nlp/?key=passkey&get_balance=1"
@@ -266,6 +283,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj28.play()
+      time.sleep(2)
 
       text += f'.{balance}.'
 
@@ -274,6 +292,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj25.play()
+      time.sleep(2)
 
   elif intent == 'Utilities_energy_price':
       address = fr"http://localhost/nlp/?key=passkey&get_price=1"
@@ -287,6 +306,7 @@ def intent2action(intent):
         #sd.play(data, fs)
         status = sd.wait()
         soundObj29.play()
+        time.sleep(2)
 
         text+= f'.{quantity[0]/price}.'
 
@@ -295,6 +315,7 @@ def intent2action(intent):
         #sd.play(data, fs)
         status = sd.wait()
         soundObj30.play()
+        time.sleep(2)
 
         text+= f'.{quantity[0]} {currency[0]}.'
 
@@ -306,6 +327,7 @@ def intent2action(intent):
         #sd.play(data, fs)
         status = sd.wait()
         soundObj31.play()
+        time.sleep(2)
 
         text += f'.{quantity[0]}.'
 
@@ -314,6 +336,7 @@ def intent2action(intent):
         #sd.play(data, fs)
         status = sd.wait()
         soundObj32.play()
+        time.sleep(2)
 
         text += f'.{price}.'
 
@@ -325,6 +348,7 @@ def intent2action(intent):
         #sd.play(data, fs)
         status = sd.wait()
         soundObj33.play()
+        time.sleep(2)
 
         text += f'.{price}.'
 
@@ -336,6 +360,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj34.play()
+      time.sleep(2)
 
       text += f'{quantity[0]} {currency[0]}'
 
@@ -346,6 +371,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj35.play()
+      time.sleep(2)
 
       text += f'{quantity[0]}'
 
@@ -354,6 +380,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj25.play()
+      time.sleep(2)
 
     else:
       filename = '4.wav'
@@ -361,6 +388,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj4.play()
+      time.sleep(2)
 
   elif intent == 'Utilities_View_Usage':
     if period:
@@ -374,6 +402,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj36.play()
+      time.sleep(2)
 
       text += f'{period[0]}'
 
@@ -382,6 +411,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj24.play()
+      time.sleep(2)
 
       text += f'{usage}'
 
@@ -398,6 +428,7 @@ def intent2action(intent):
       #sd.play(data, fs)
       status = sd.wait()
       soundObj37.play()
+      time.sleep(2)
 
     
       text += f"{usage}"
@@ -408,6 +439,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj5.play()
+    time.sleep(2)
 
   elif intent == 'Ask_question':
     filename = '6.wav'
@@ -415,6 +447,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj6.play()
+    time.sleep(2)
 
   elif intent == 'Bored':
     filename = '7.wav'
@@ -422,6 +455,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj7.play()
+    time.sleep(2)
 
   elif intent == 'Love':
     filename = '8.wav'
@@ -429,6 +463,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj8.play()
+    time.sleep(2)
 
 
   elif intent == 'Compliment':
@@ -437,6 +472,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj9.play()
+    time.sleep(2)
 
   
   elif intent == 'Hobby':
@@ -445,6 +481,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj10.play()
+    time.sleep(2)
 
 
   elif intent == 'get_personal':
@@ -453,6 +490,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj11.play()
+    time.sleep(2)
 
 
   elif intent == 'Pissed':
@@ -461,6 +499,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj12.play()
+    time.sleep(2)
 
 
   elif intent == 'Language':
@@ -469,6 +508,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj13.play()
+    time.sleep(2)
 
 
   elif intent == 'Boss':
@@ -477,6 +517,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj14.play()
+    time.sleep(2)
     
 
 
@@ -486,6 +527,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj15.play()
+    time.sleep(2)
 
 
 
@@ -495,6 +537,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj16.play()
+    time.sleep(2)
 
 
   #elif intent == 'know_weather':
@@ -508,6 +551,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj38.play()
+    time.sleep(2)
     
     text+= f".{d2}" 
 
@@ -517,6 +561,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj17.play()
+    time.sleep(2)
 
     
   elif intent == 'Ask_question':
@@ -526,6 +571,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj18.play()
+    time.sleep(2)
 
     
   elif intent == 'greeting':
@@ -535,6 +581,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj19.play()
+    time.sleep(2)
 
       
   elif intent == 'Utilities_Report_Outage':
@@ -543,6 +590,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj20.play()
+    time.sleep(2)
 
       
   elif intent == 'Utilities_Start_Service':
@@ -551,6 +599,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj20.play()
+    time.sleep(2)
       
   elif intent == 'Utilities_Stop_Service':
     filename = '20.wav'
@@ -558,6 +607,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj20.play()
+    time.sleep(2)
       
   else:
 
@@ -566,6 +616,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj20.play()
+    time.sleep(2)
     
   return text
       
