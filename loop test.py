@@ -616,7 +616,7 @@ def intent2action(intent):
     data, fs = sf.read(filename, dtype='float32')
     #sd.play(data, fs)
     status = sd.wait()
-    soundObj20.play()
+    soundObjb.play()
     time.sleep(2)
     
   return text
