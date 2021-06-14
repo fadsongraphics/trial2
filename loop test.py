@@ -433,13 +433,13 @@ def intent2action(intent):
     
       text += f"{usage}"
 
-  elif intent == 'Age':
-    filename = '5.wav'
-    data, fs = sf.read(filename, dtype='float32')
-    #sd.play(data, fs)
-    status = sd.wait()
-    soundObj5.play()
-    time.sleep(2)
+  # elif intent == 'Age':
+  #   filename = '5.wav'
+  #   data, fs = sf.read(filename, dtype='float32')
+  #   #sd.play(data, fs)
+  #   status = sd.wait()
+  #   soundObj5.play()
+  #   time.sleep(2)
 
   elif intent == 'Ask_question':
     filename = '6.wav'
