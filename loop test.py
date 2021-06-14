@@ -601,7 +601,7 @@ try:
                                 f.write(finaltext)
                                 f.close()
 
-                                # if adeus_reply.startswith('Which device do you'):
+                                if adeus_reply.startswith('Which device do you'):
                                     
                                 #     speakword(adeus_reply)
                                 #     q.queue.clear()
