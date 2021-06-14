@@ -601,85 +601,85 @@ try:
                                 f.write(finaltext)
                                 f.close()
 
-                                if adeus_reply.startswith('Which device do you'):
+                                # if adeus_reply.startswith('Which device do you'):
                                     
-                                    speakword(adeus_reply)
-                                    q.queue.clear()
-                                    time.sleep(2)
-                                    while True: 
-                                        data = q.get()
-                                        if rec.AcceptWaveform(data):
-                                            jres = json.loads(rec.Result())
-                                            finaltext = wordtodigits.convert(jres["text"])
-                                            print(jres["text"])
-                                            device_check = any(appliance in finaltext.lower() for appliance in appliances)
-                                            if device_check:
-                                                device =list(set(appliances).intersection(set(finaltext.split())))
-                                                print(device)
-                                                adeus_reply= intent2action(user_intent)
-                                                speakword(adeus_reply)
-                                                q.queue.clear()
-                                                break
+                                #     speakword(adeus_reply)
+                                #     q.queue.clear()
+                                #     time.sleep(2)
+                                #     while True: 
+                                #         data = q.get()
+                                #         if rec.AcceptWaveform(data):
+                                #             jres = json.loads(rec.Result())
+                                #             finaltext = wordtodigits.convert(jres["text"])
+                                #             print(jres["text"])
+                                #             device_check = any(appliance in finaltext.lower() for appliance in appliances)
+                                #             if device_check:
+                                #                 device =list(set(appliances).intersection(set(finaltext.split())))
+                                #                 print(device)
+                                #                 adeus_reply= intent2action(user_intent)
+                                #                 speakword(adeus_reply)
+                                #                 q.queue.clear()
+                                #                 break
                                             
                                         
-                                            else:
-                                                speakword("please respond with a device name")
-                                                q.queue.clear()
+                                #             else:
+                                #                 speakword("please respond with a device name")
+                                #                 q.queue.clear()
                                             
                                     
                                         
                                         
-                                elif adeus_reply.startswith('How many kilowatts'):
-                                    speakword(adeus_reply)
-                                    q.queue.clear()
-                                    time.sleep(2)
-                                    while True:
-                                        data = q.get()
-                                        if rec.AcceptWaveform(data):
-                                            jres = json.loads(rec.Result())
-                                            print(jres["text"])
-                                            finaltext = wordtodigits.convert(jres["text"])
-                                            quantity = list (map(int, re.findall(r'\d+', finaltext)))
-                                            currency_check  = any(currency in finaltext.lower() for currency in currencies)
-                                            if currency_check and quantity:
-                                                currency = list(set(currencies).intersection(set(finaltext.split())))
-                                                adeus_reply = intent2action(user_intent)
-                                                speakword(adeus_reply)
-                                                q.queue.clear()
-                                                break
-                                            elif quantity:
-                                                adeus_reply = intent2action(user_intent)
-                                                print(user_intent)
-                                                speakword(adeus_reply)
-                                                q.queue.clear()
-                                                break
-                                            else:
-                                                speakword("please respond with how much energy you need")
-                                                q.queue.clear()
+                                # elif adeus_reply.startswith('How many kilowatts'):
+                                #     speakword(adeus_reply)
+                                #     q.queue.clear()
+                                #     time.sleep(2)
+                                #     while True:
+                                #         data = q.get()
+                                #         if rec.AcceptWaveform(data):
+                                #             jres = json.loads(rec.Result())
+                                #             print(jres["text"])
+                                #             finaltext = wordtodigits.convert(jres["text"])
+                                #             quantity = list (map(int, re.findall(r'\d+', finaltext)))
+                                #             currency_check  = any(currency in finaltext.lower() for currency in currencies)
+                                #             if currency_check and quantity:
+                                #                 currency = list(set(currencies).intersection(set(finaltext.split())))
+                                #                 adeus_reply = intent2action(user_intent)
+                                #                 speakword(adeus_reply)
+                                #                 q.queue.clear()
+                                #                 break
+                                #             elif quantity:
+                                #                 adeus_reply = intent2action(user_intent)
+                                #                 print(user_intent)
+                                #                 speakword(adeus_reply)
+                                #                 q.queue.clear()
+                                #                 break
+                                #             else:
+                                #                 speakword("please respond with how much energy you need")
+                                #                 q.queue.clear()
                                                 
-                                elif adeus_reply.startswith('For which period'):
-                                    speakword(adeus_reply)
-                                    q.queue.clear()
-                                    while True:          
-                                        data = q.get()
-                                        rec.AcceptWaveform(data)
-                                        jres = json.loads(rec.Result())
-                                        finaltext = wordtodigits.convert(jres["text"])
-                                        quantity = list (map(int, re.findall(r'\d+', finaltext)))
-                                        period_check  = any(time in finaltext.lower() for time in times)
-                                        if period_check:
-                                            period = list(set(times).intersection(set(finaltext.split())))
-                                            adeus_reply = intent2action(user_intent)
-                                            speakword(adeus_reply)
-                                            q.queue.clear()
-                                            break
-                                        else:
-                                            speakword("please respond with the period you want ")
+                                # elif adeus_reply.startswith('For which period'):
+                                #     speakword(adeus_reply)
+                                #     q.queue.clear()
+                                #     while True:          
+                                #         data = q.get()
+                                #         rec.AcceptWaveform(data)
+                                #         jres = json.loads(rec.Result())
+                                #         finaltext = wordtodigits.convert(jres["text"])
+                                #         quantity = list (map(int, re.findall(r'\d+', finaltext)))
+                                #         period_check  = any(time in finaltext.lower() for time in times)
+                                #         if period_check:
+                                #             period = list(set(times).intersection(set(finaltext.split())))
+                                #             adeus_reply = intent2action(user_intent)
+                                #             speakword(adeus_reply)
+                                #             q.queue.clear()
+                                #             break
+                                #         else:
+                                #             speakword("please respond with the period you want ")
                                                         
                                                         
-                                else:
-                                    speakword(adeus_reply)
-                                    q.queue.clear()
+                                # else:
+                                #     speakword(adeus_reply)
+                                #     q.queue.clear()
 
                             if ("thank you" in jres["text"]) or ("bye" in jres["text"]):
                                 # address = fr"http://localhost/nlp/vivian.php?trigger=false"
