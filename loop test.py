@@ -19,7 +19,7 @@ import re
 from datetime import date
 import time
 import pygame
-from pygame import
+
 pygame.mixer.init()
 soundObj = pygame.mixer.Sound('Beginning.wav')
 
