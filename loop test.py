@@ -481,12 +481,13 @@ def intent2action(intent):
 
 def speakword(text):
 
-  engine = pyttsx3.init()
-  voices = engine.getProperty('voices')
-  engine.setProperty('voice', voices[1].id)
-  engine.setProperty('rate', 140)
-  engine.say(text)
-  engine.runAndWait()
+  # engine = pyttsx3.init()
+  # voices = engine.getProperty('voices')
+  # engine.setProperty('voice', voices[1].id)
+  # engine.setProperty('rate', 140)
+  # engine.say(text)
+  # engine.runAndWait()
+  print(text)
     
     
 q = queue.Queue()
