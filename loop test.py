@@ -41,7 +41,7 @@ soundObj16 = pygame.mixer.Sound('16.wav')
 soundObj17 = pygame.mixer.Sound('17.wav')
 soundObj18 = pygame.mixer.Sound('18.wav')
 soundObj19 = pygame.mixer.Sound('19.wav')
-# soundObj20 = pygame.mixer.Sound('20.wav')
+soundObj20 = pygame.mixer.Sound('20.wav')
 soundObj21 = pygame.mixer.Sound('21.wav')
 soundObj22 = pygame.mixer.Sound('22.wav')
 soundObj23 = pygame.mixer.Sound('23.wav')
@@ -62,6 +62,7 @@ soundObj37 = pygame.mixer.Sound('37.wav')
 soundObj38 = pygame.mixer.Sound('38.wav')
 soundObj39 = pygame.mixer.Sound('39.wav')
 soundObja = pygame.mixer.Sound('bbm_tone.wav')
+soundObjb = pygame.mixer.Sound('Pipes.wav')
 
 
 
@@ -584,30 +585,30 @@ def intent2action(intent):
     time.sleep(2)
 
       
-  # elif intent == 'Utilities_Report_Outage':
-  #   filename = '20.wav'
-  #   data, fs = sf.read(filename, dtype='float32')
-  #   #sd.play(data, fs)
-  #   status = sd.wait()
-  #   soundObj20.play()
-  #   time.sleep(7)
+  elif intent == 'Utilities_Report_Outage':
+    filename = '20.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+    soundObj20.play()
+    time.sleep(7)
 
       
-  # elif intent == 'Utilities_Start_Service':
-  #   filename = '20.wav'
-  #   data, fs = sf.read(filename, dtype='float32')
-  #   #sd.play(data, fs)
-  #   status = sd.wait()
-  #   soundObj20.play()
-  #   time.sleep(7)
+  elif intent == 'Utilities_Start_Service':
+    filename = '20.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+    soundObj20.play()
+    time.sleep(7)
       
-  # elif intent == 'Utilities_Stop_Service':
-  #   filename = '20.wav'
-  #   data, fs = sf.read(filename, dtype='float32')
-  #   #sd.play(data, fs)
-  #   status = sd.wait()
-  #   soundObj20.play()
-  #   time.sleep(7)
+  elif intent == 'Utilities_Stop_Service':
+    filename = '20.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+    soundObj20.play()
+    time.sleep(7)
       
   else:
 
