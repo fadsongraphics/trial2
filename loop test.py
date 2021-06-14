@@ -562,7 +562,7 @@ try:
                     jres = json.loads((rec.Result()))
                     print (jres) 
                     
-                    if "hello vivian" in jres["text"]:
+                    if ("hello vivian" in jres["text"]) or ("hello" in jres["text"]) or ("vivian" in jres["text"]):
                         # address = fr"http://localhost/nlp/vivian.php?trigger=true"
                         # requests.get(address)
                         
@@ -597,9 +597,9 @@ try:
                                 print(adeus_reply)
                                 print (finaltext)
                                 # f = open("stt.txt","w")
-                                #f = open("/var/www/stt.txt","w")
-                                #f.write(finaltext)
-                                #f.close()
+                                f = open("/var/www/stt.txt","w")
+                                f.write(finaltext)
+                                f.close()
 
                                 if adeus_reply.startswith('Which device do you'):
                                     
