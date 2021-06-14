@@ -18,6 +18,9 @@ import re
 ##import simpleaudio as sa
 from datetime import date
 import time
+import pygame
+pygame.mixer.init()
+pygame.mixer.music.load("Beginning.wav")
 
 
 
@@ -567,10 +570,11 @@ try:
                         # address = fr"http://localhost/nlp/vivian.php?trigger=true"
                         # requests.get(address)
                         
-                        filename = 'Beginning.wav'
-                        data, fs = sf.read(filename, dtype='float32')
-                        # sd.play(data, fs)
-                        status = sd.wait()
+                        # filename = 'Beginning.wav'
+                        # data, fs = sf.read(filename, dtype='float32')
+                        # # sd.play(data, fs)
+                        # status = sd.wait()
+                        pygame.mixer.music.play()
 
                         not_done_with_Q= True
 
