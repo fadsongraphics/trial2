@@ -597,9 +597,9 @@ try:
                                 print(adeus_reply)
                                 print (finaltext)
                                 # f = open("stt.txt","w")
-                                f = open("/var/www/stt.txt","w")
-                                f.write(finaltext)
-                                f.close()
+                                #f = open("/var/www/stt.txt","w")
+                                #f.write(finaltext)
+                                #f.close()
 
                                 if adeus_reply.startswith('Which device do you'):
                                     
