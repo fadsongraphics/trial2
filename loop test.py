@@ -19,8 +19,11 @@ import re
 from datetime import date
 import time
 import pygame
+from pygame import
 pygame.mixer.init()
-pygame.mixer.music.load("Beginning.wav")
+soundObj = pygame.mixer.Sound('Beginning.wav')
+
+
 
 
 
@@ -574,7 +577,7 @@ try:
                         # data, fs = sf.read(filename, dtype='float32')
                         # # sd.play(data, fs)
                         # status = sd.wait()
-                        pygame.mixer.music.play()
+                        soundObj.play()
 
                         not_done_with_Q= True
 
