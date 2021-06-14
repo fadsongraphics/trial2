@@ -83,22 +83,22 @@ def intent2action(intent):
         if web_res['status']==0:
             text+= f'.{response}.'
         else:#get status from db
-          # filename = '21.wav'
-          # data, fs = sf.read(filename, dtype='float32')
-          # #sd.play(data, fs)
-          # status = sd.wait()
+          filename = '21.wav'
+          data, fs = sf.read(filename, dtype='float32')
+          #sd.play(data, fs)
+          status = sd.wait()
           text += f'{d}'
-          # filename = '22.wav'
-          # data, fs = sf.read(filename, dtype='float32')
-          # #sd.play(data, fs)
-          # status = sd.wait()
+          filename = '22.wav'
+          data, fs = sf.read(filename, dtype='float32')
+          #sd.play(data, fs)
+          status = sd.wait()
           text += f'{rerfsponse}'
 
     else:
-      # filename = '1.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '1.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
   elif intent == 'Utilities_Device_Usage':
 
@@ -110,31 +110,31 @@ def intent2action(intent):
         web_res = requests.get(address).json()
         usage = web_res['response']
 
-        # filename = '21.wav'
-        # data, fs = sf.read(filename, dtype='float32')
-        # #sd.play(data, fs)
-        # status = sd.wait()
+        filename = '21.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
 
         text += f'.{d}.'
 
-        # filename = '23.wav'
-        # data, fs = sf.read(filename, dtype='float32')
-        # #sd.play(data, fs)
-        # status = sd.wait()
+        filename = '23.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
 
         text += f'.{period}.'
 
-        # filename = '24.wav'
-        # data, fs = sf.read(filename, dtype='float32')
-        # #sd.play(data, fs)
-        # status = sd.wait()
+        filename = '24.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
 
         text += f'.{usage}.'
 
-        # filename = '25.wav'
-        # data, fs = sf.read(filename, dtype='float32')
-        # #sd.play(data, fs)
-        # status = sd.wait()
+        filename = '25.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
 
 
 
@@ -144,18 +144,18 @@ def intent2action(intent):
       web_res = requests.get(address).json()
       usage = web_res['response']
 
-      # filename = '39.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '39.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
       text += f'.{usage}.'
 
     else:
-      # filename = '1.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '1.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
         
 
   elif intent == 'Turn_off_device':
@@ -165,18 +165,18 @@ def intent2action(intent):
         address = address.replace(' ', '%20')
         web_res = requests.post(address).json()
 
-        # filename = '26.wav'
-        # data, fs = sf.read(filename, dtype='float32')
-        # #sd.play(data, fs)
-        # status = sd.wait()
+        filename = '26.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
 
         text += f'.{d}.'
 
     else:
-      # filename = '2.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '2.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
   elif intent == 'Turn_on_device':
     if device:
@@ -185,17 +185,17 @@ def intent2action(intent):
         address = address.replace(' ', '%20')
         web_res= requests.post(address).json()
 
-        # filename = '27.wav'
-        # data, fs = sf.read(filename, dtype='float32')
-        # #sd.play(data, fs)
-        # status = sd.wait()
+        filename = '27.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
 
         text += f'.{d}.'
     else:
-      # filename = '3.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '3.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
   elif intent == 'Utilities_Energy_Balance':
       address = fr"http://localhost/nlp/?key=passkey&get_balance=1"
@@ -203,17 +203,17 @@ def intent2action(intent):
       web_res = requests.get(address).json()
       balance = web_res['response']
       
-      # filename = '28.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '28.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
       text += f'.{balance}.'
 
-      # filename = '25.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '25.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
   elif intent == 'Utilities_energy_price':
       address = fr"http://localhost/nlp/?key=passkey&get_price=1"
@@ -222,76 +222,76 @@ def intent2action(intent):
       price = web_res['response'] 
       if quantity and currency:
 
-        # filename = '29.wav'
-        # data, fs = sf.read(filename, dtype='float32')
-        # #sd.play(data, fs)
-        # status = sd.wait()
+        filename = '29.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
 
         text+= f'.{quantity[0]/price}.'
 
-        # filename = '30.wav'
-        # data, fs = sf.read(filename, dtype='float32')
-        # #sd.play(data, fs)
-        # status = sd.wait()
+        filename = '30.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
 
         text+= f'.{quantity[0]} {currency[0]}.'
 
       elif quantity:
         price = price * quantity[0]
 
-        # filename = '31.wav'
-        # data, fs = sf.read(filename, dtype='float32')
-        # #sd.play(data, fs)
-        # status = sd.wait()
+        filename = '31.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
 
         text += f'.{quantity[0]}.'
 
-        # filename = '32.wav'
-        # data, fs = sf.read(filename, dtype='float32')
-        # #sd.play(data, fs)
-        # status = sd.wait()
+        filename = '32.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
 
         text += f'.{price}.'
 
 
       else:
 
-        # filename = '33.wav'
-        # data, fs = sf.read(filename, dtype='float32')
-        # #sd.play(data, fs)
-        # status = sd.wait()
+        filename = '33.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
 
         text += f'.{price}.'
 
   elif intent == 'Utilities_Recharge_Account':
     if quantity and currency:
 
-      # filename = '34.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '34.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
       text += f'{quantity[0]} {currency[0]}'
 
     elif quantity:
 
-      # filename = '35.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '35.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
       text += f'{quantity[0]}'
 
-      # filename = '25.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '25.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
     else:
-      # filename = '4.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '4.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
   elif intent == 'Utilities_View_Usage':
     if period:
@@ -300,17 +300,17 @@ def intent2action(intent):
       web_res = requests.get(address).json()
       usage = web_res['response']
 
-      # filename = '36.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '36.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
       text += f'{period[0]}'
 
-      # filename = '24.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '24.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
       text += f'{usage}'
 
@@ -322,94 +322,94 @@ def intent2action(intent):
       web_res = requests.get(address).json()
       usage = web_res['response']
 
-      # filename = '37.wav'
-      # data, fs = sf.read(filename, dtype='float32')
-      # #sd.play(data, fs)
-      # status = sd.wait()
+      filename = '37.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
     
       text += f"{usage}"
 
   elif intent == 'Age':
-    # filename = '5.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '5.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
   elif intent == 'Ask_question':
-    # filename = '6.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '6.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
   elif intent == 'Bored':
-    # filename = '7.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '7.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
   elif intent == 'Love':
-    # filename = '8.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '8.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
 
   elif intent == 'Compliment':
-    # filename = '9.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '9.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
   
   elif intent == 'Hobby':
-    # filename = '10.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '10.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
 
   elif intent == 'get_personal':
-    # filename = '11.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '11.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
 
   elif intent == 'Pissed':
-    # filename = '12.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '12.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
 
   elif intent == 'Language':
-    # filename = '13.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '13.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
 
   elif intent == 'Boss':
-    # filename = '14.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '14.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
 
   elif intent == 'Retraining':
-    # filename = '15.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '15.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
 
 
   elif intent == 'Job':
-    # filename = '16.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '16.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
 
   #elif intent == 'know_weather':
@@ -418,61 +418,61 @@ def intent2action(intent):
   elif intent == 'know_date':
     d2 = today.strftime("%B %d, %Y")
 
-    # filename = '38.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '38.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
     
     text+= f".{d2}" 
 
   elif intent == 'End_conversation':
-    # filename = '17.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '17.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
     
   elif intent == 'Ask_question':
 
-    # filename = '18.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '18.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
     
   elif intent == 'greeting':
 
-    # filename = '19.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '19.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
       
   elif intent == 'Utilities_Report_Outage':
-    # filename = '20.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '20.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
       
   elif intent == 'Utilities_Start_Service':
-    # filename = '20.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '20.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
       
   elif intent == 'Utilities_Stop_Service':
-    # filename = '20.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = '20.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
       
   else:
 
-    # filename = 'Pipes.wav'
-    # data, fs = sf.read(filename, dtype='float32')
-    # #sd.play(data, fs)
-    # status = sd.wait()
+    filename = 'Pipes.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
     
   return text
       
@@ -566,10 +566,10 @@ try:
                         # address = fr"http://localhost/nlp/vivian.php?trigger=true"
                         # requests.get(address)
                         
-                        # filename = 'Beginning.wav'
-                        # data, fs = sf.read(filename, dtype='float32')
-                        # # sd.play(data, fs)
-                        # status = sd.wait()
+                        filename = 'Beginning.wav'
+                        data, fs = sf.read(filename, dtype='float32')
+                        # sd.play(data, fs)
+                        status = sd.wait()
 
                         not_done_with_Q= True
 
@@ -596,8 +596,8 @@ try:
                                 adeus_reply = intent2action(user_intent)
                                 print(adeus_reply)
                                 print (finaltext)
-                                # f = open("stt.txt","w")
-                                f = open("/var/www/stt.txt","w")
+                                f = open("stt.txt","w")
+                                # f = open("/var/www/stt.txt","w")
                                 f.write(finaltext)
                                 f.close()
 
@@ -686,9 +686,9 @@ try:
                                 # requests.get(address)
                                 
                                 not_done_with_Q= False
-                                # filename = 'bbm_tone.wav'
-                                # data, fs = sf.read(filename, dtype='float32')
-                                # # sd.play(data, fs)
+                                filename = 'bbm_tone.wav'
+                                data, fs = sf.read(filename, dtype='float32')
+                                # sd.play(data, fs)
                                 status = sd.wait()
 
                     
