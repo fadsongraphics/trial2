@@ -596,8 +596,8 @@ try:
                                 adeus_reply = intent2action(user_intent)
                                 print(adeus_reply)
                                 print (finaltext)
-                                f = open("stt.txt","w")
-                                # f = open("/var/www/stt.txt","w")
+                                # f = open("stt.txt","w")
+                                f = open("/var/www/stt.txt","w")
                                 f.write(finaltext)
                                 f.close()
 
