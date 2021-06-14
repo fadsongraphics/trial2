@@ -590,7 +590,7 @@ def intent2action(intent):
     data, fs = sf.read(filename, dtype='float32')
     #sd.play(data, fs)
     status = sd.wait()
-    soundObj20.play()
+    soundObjb.play()
     time.sleep(7)
 
       
@@ -599,7 +599,7 @@ def intent2action(intent):
     data, fs = sf.read(filename, dtype='float32')
     #sd.play(data, fs)
     status = sd.wait()
-    soundObj20.play()
+    soundObjb.play()
     time.sleep(7)
       
   elif intent == 'Utilities_Stop_Service':
@@ -607,13 +607,11 @@ def intent2action(intent):
     data, fs = sf.read(filename, dtype='float32')
     #sd.play(data, fs)
     status = sd.wait()
-    soundObj20.play()
+    soundObjb.play()
     time.sleep(7)
       
   else:
 
-    filename = 'Pipes.wav'
-    data, fs = sf.read(filename, dtype='float32')
     #sd.play(data, fs)
     status = sd.wait()
     soundObjb.play()
