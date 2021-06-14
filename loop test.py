@@ -590,7 +590,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj20.play()
-    time.sleep(5)
+    time.sleep(7)
 
       
   elif intent == 'Utilities_Start_Service':
@@ -599,7 +599,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj20.play()
-    time.sleep(5)
+    time.sleep(7)
       
   elif intent == 'Utilities_Stop_Service':
     filename = '20.wav'
@@ -607,7 +607,7 @@ def intent2action(intent):
     #sd.play(data, fs)
     status = sd.wait()
     soundObj20.play()
-    time.sleep(5)
+    time.sleep(7)
       
   else:
 
@@ -719,6 +719,8 @@ try:
 
                         not_done_with_Q= True
 
+                        
+
                     
                         
                         
@@ -730,7 +732,7 @@ try:
                         
                         
                         while not_done_with_Q:
-                            
+                            print (jres) 
                             data= q.get()
                             if rec.AcceptWaveform(data):
                                 jres = json.loads((rec.Result()))
