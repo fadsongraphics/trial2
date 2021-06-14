@@ -1,3 +1,4 @@
+import soundfile as sf
 import argparse 
 import os
 import queue
@@ -9,11 +10,12 @@ import pyttsx3
 import wordtodigits
 import pandas as pd
 import numpy as np
+from playsound import playsound
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import requests
 import re
-import simpleaudio as sa
+##import simpleaudio as sa
 from datetime import date
 import time
 
@@ -79,11 +81,24 @@ def intent2action(intent):
         web_res  = requests.get(address).json() 
         response =  web_res['response']
         if web_res['status']==0:
-            text+= f'{response}'
+            text+= f'.{response}.'
         else:#get status from db
-            text += f'Your {d} status is {response}...'
+          filename = '21.wav'
+          data, fs = sf.read(filename, dtype='float32')
+          #sd.play(data, fs)
+          status = sd.wait()
+          text += f'{d}'
+          filename = '22.wav'
+          data, fs = sf.read(filename, dtype='float32')
+          #sd.play(data, fs)
+          status = sd.wait()
+          text += f'{rerfsponse}'
+
     else:
-      text += 'Which device do you want to know its status?'
+      filename = '1.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
   elif intent == 'Utilities_Device_Usage':
 
@@ -93,16 +108,55 @@ def intent2action(intent):
         address = address.replace(' ', '%20')
         
         web_res = requests.get(address).json()
-        usage = web_res['response'] 
-        text += f'Your {d} usage for {period} is {usage} kilowatts...'
+        usage = web_res['response']
+
+        filename = '21.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
+
+        text += f'.{d}.'
+
+        filename = '23.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
+
+        text += f'.{period}.'
+
+        filename = '24.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
+
+        text += f'.{usage}.'
+
+        filename = '25.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
+
+
+
     elif device:
       address = fr"http://localhost/nlp/?key=passkey&device={d}&get_energy=1&period=today"
       address = address.replace(' ', '%20')
       web_res = requests.get(address).json()
       usage = web_res['response']
-      text += f'Your device usage for today is {usage}'
+
+      filename = '39.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
+
+      text += f'.{usage}.'
+
     else:
-        text+= f'Which device do you want to know its status'
+      filename = '1.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
+        
 
   elif intent == 'Turn_off_device':
     if device:
@@ -110,9 +164,19 @@ def intent2action(intent):
         address = fr"http://localhost/nlp/?key=passkey&device={d}&turn_off=1"
         address = address.replace(' ', '%20')
         web_res = requests.post(address).json()
-        text += f'Switching off your {d}...'
+
+        filename = '26.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
+
+        text += f'.{d}.'
+
     else:
-      text += 'Which device do you want to switch off?'
+      filename = '2.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
   elif intent == 'Turn_on_device':
     if device:
@@ -120,16 +184,36 @@ def intent2action(intent):
         address = fr"http://localhost/nlp/?key=passkey&device={d}&turn_on=1"
         address = address.replace(' ', '%20')
         web_res= requests.post(address).json()
-        text += f'Switching on your {d}...'
+
+        filename = '27.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
+
+        text += f'.{d}.'
     else:
-      text += 'Which device do you want to switch on?'
+      filename = '3.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
   elif intent == 'Utilities_Energy_Balance':
       address = fr"http://localhost/nlp/?key=passkey&get_balance=1"
       address = address.replace(' ', '%20')
       web_res = requests.get(address).json()
       balance = web_res['response']
-      text += f'Your energy balance is {balance} kilowatts....'
+      
+      filename = '28.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
+
+      text += f'.{balance}.'
+
+      filename = '25.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
   elif intent == 'Utilities_energy_price':
       address = fr"http://localhost/nlp/?key=passkey&get_price=1"
@@ -137,20 +221,77 @@ def intent2action(intent):
       web_res= requests.get(address).json()
       price = web_res['response'] 
       if quantity and currency:
-        text+= f'You can get {quantity[0]/price} killowatts for {quantity[0]} {currency[0]}'
+
+        filename = '29.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
+
+        text+= f'.{quantity[0]/price}.'
+
+        filename = '30.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
+
+        text+= f'.{quantity[0]} {currency[0]}.'
+
       elif quantity:
         price = price * quantity[0]
-        text += f'The price of {quantity[0]} kilowatt per hour is {price}....'
+
+        filename = '31.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
+
+        text += f'.{quantity[0]}.'
+
+        filename = '32.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
+
+        text += f'.{price}.'
+
+
       else:
-        text += f'The price of one kilowatt per hour is {price}....'
+
+        filename = '33.wav'
+        data, fs = sf.read(filename, dtype='float32')
+        #sd.play(data, fs)
+        status = sd.wait()
+
+        text += f'.{price}.'
 
   elif intent == 'Utilities_Recharge_Account':
     if quantity and currency:
-      text += f'your account has just be recharged with energy worth {quantity[0]} {currency[0]}'
+
+      filename = '34.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
+
+      text += f'{quantity[0]} {currency[0]}'
+
     elif quantity:
-      text += f'Your account has just be credited with {quantity[0]} kilowatts'
+
+      filename = '35.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
+
+      text += f'{quantity[0]}'
+
+      filename = '25.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
+
     else:
-      text += 'How many kilowatts do you want to buy?'
+      filename = '4.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
 
   elif intent == 'Utilities_View_Usage':
     if period:
@@ -158,79 +299,180 @@ def intent2action(intent):
       address = address = address.replace(' ', '%20')
       web_res = requests.get(address).json()
       usage = web_res['response']
-      text += f'Your usage for {period[0]} is {usage}'
+
+      filename = '36.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
+
+      text += f'{period[0]}'
+
+      filename = '24.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
+
+      text += f'{usage}'
+
+
+
     else:
       address = fr"http://localhost/nlp/?key=passkey&get_energy=1&period=today"
       address = address = address.replace(' ', '%20')
       web_res = requests.get(address).json()
       usage = web_res['response']
-      text += f"Your usage for today is {usage}"
+
+      filename = '37.wav'
+      data, fs = sf.read(filename, dtype='float32')
+      #sd.play(data, fs)
+      status = sd.wait()
+
+    
+      text += f"{usage}"
 
   elif intent == 'Age':
-    text+= f'I cannot really tell because I am updated often. You can wish me a happy birthday whenever you want'
+    filename = '5.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
   elif intent == 'Ask_question':
-    text+= f'Sure, how can I help you?'
+    filename = '6.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
   elif intent == 'Bored':
-    text+= f'Here is a joke I know, what did mummy spider say to baby spider?...You spend too much time on the web!'
+    filename = '7.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
   elif intent == 'Love':
-    text+= f"I'm happy being single. The upside is I can concentrate on saving the planet"
+    filename = '8.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
 
   elif intent == 'Compliment':
-    text+= f"Oh, thank you. I'm blushing right now."
+    filename = '9.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
   
   elif intent == 'Hobby':
-    text+= f"I love to help people manage their energy efficiently. I would also really love to win the global zero C O 2 challenge"
+    filename = '10.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
 
   elif intent == 'get_personal':
-    text+= f"I'm your energy concierge, I help you manage your energy smartly. Together we can contribute to saving the planet"
+    filename = '11.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
 
   elif intent == 'Pissed':
-    text+= f"Sorry!"
+    filename = '12.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
 
   elif intent == 'Language':
-    text+= f"I can only speak in English right now. However, with a few tweaks, I can speak any language"
+    filename = '13.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
 
   elif intent == 'Boss':
-    text+= f"I was made by A-DEUS to serve as a personal energy assistant for A-DEUS customers"
+    filename = '14.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
 
   elif intent == 'Retraining':
-    text+= f"I'm already pretty smart plus I am learning so much from all our conversations"
+    filename = '15.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
 
 
   elif intent == 'Job':
-    text+= f"I would be happy to help. We can always work together"
+    filename = '16.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
 
-  elif intent == 'know_weather':
-    text+= f"The weather today is..." #get from db
+
+  #elif intent == 'know_weather':
+    #text+= f"The weather today is..." #get from db
 
   elif intent == 'know_date':
     d2 = today.strftime("%B %d, %Y")
+
+    filename = '38.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
     
-    text+= f"The date today is {d2}" 
+    text+= f".{d2}" 
 
   elif intent == 'End_conversation':
-    text+= f"I am happy I was able to help"
+    filename = '17.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
     
   elif intent == 'Ask_question':
-    text+= f"Sure, how can I help" 
+
+    filename = '18.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
     
   elif intent == 'greeting':
-      text+= f"Hey, I'm good, do you need help with anything"
+
+    filename = '19.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
       
   elif intent == 'Utilities_Report_Outage':
-      text+= f"Our team will respond to your request as soon as possible"
+    filename = '20.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
+
       
   elif intent == 'Utilities_Start_Service':
-      text+= f"Our team will respond to your request as soon as possible"
+    filename = '20.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
       
   elif intent == 'Utilities_Stop_Service':
-      text+= f"Our team will respond to your request as soon as possible"
+    filename = '20.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
       
   else:
-      text+= f"Can you reword your statement? I don't understand"
+
+    filename = 'Pipes.wav'
+    data, fs = sf.read(filename, dtype='float32')
+    #sd.play(data, fs)
+    status = sd.wait()
     
   return text
       
@@ -238,9 +480,13 @@ def intent2action(intent):
 
 
 def speakword(text):
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
+
+  engine = pyttsx3.init()
+  voices = engine.getProperty('voices')
+  engine.setProperty('voice', voices[1].id)
+  engine.setProperty('rate', 140)
+  engine.say(text)
+  engine.runAndWait()
     
     
 q = queue.Queue()
@@ -303,7 +549,7 @@ try:
     else:
         dump_fn = None
 
-    with sd.RawInputStream(samplerate=args.samplerate, blocksize = 16000, device=args.device, dtype='int16',
+    with sd.RawInputStream(samplerate=args.samplerate, blocksize = 4000, device=args.device, dtype='int16',
                             channels=1, callback=callback):
             print('#' * 80)
             print('Press Ctrl+C to stop the recording')
@@ -314,28 +560,47 @@ try:
                 data = q.get()
                 if rec.AcceptWaveform(data):
                     jres = json.loads((rec.Result()))
+                    print (jres) 
                     
-                    if jres["text"]== str("hello james"):
-                        filename = 'bbm_tone.wav'
-                        wave_obj = sa.WaveObject.from_wave_file(filename)
-                        play_obj = wave_obj.play()
-                        play_obj.wait_done()
-                        q.queue.clear()
+                    if "hello vivian" in jres["text"]:
+                        address = fr"http://localhost/nlp/vivian.php?trigger=true"
+                        requests.get(address)
+                        
+                        filename = 'Beginning.wav'
+                        data, fs = sf.read(filename, dtype='float32')
+                        # #sd.play(data, fs)
+                        status = sd.wait()
+
+                        not_done_with_Q= True
+
+                    
                         
                         
                         
-                        while True:
+
+                        
+                        
+                        
+                        
+                        
+                        while not_done_with_Q:
                             
                             data= q.get()
                             if rec.AcceptWaveform(data):
                                 jres = json.loads((rec.Result()))
-                            
+                                
+                           
                         
                                 finaltext= wordtodigits.convert((jres["text"]))
                                 user_intent = get_intent(finaltext)
                                 adeus_reply = intent2action(user_intent)
                                 print(adeus_reply)
-                                
+                                print (finaltext)
+                                f = open("stt.txt","w")
+                                # f = open("/var/www/stt.txt","w")
+                                f.write(finaltext)
+                                f.close()
+
                                 if adeus_reply.startswith('Which device do you'):
                                     
                                     speakword(adeus_reply)
@@ -415,9 +680,22 @@ try:
                                 else:
                                     speakword(adeus_reply)
                                     q.queue.clear()
+
+                            if ("thank you" in jres["text"]) or ("bye" in jres["text"]):
+                                address = fr"http://localhost/nlp/vivian.php?trigger=false"
+                                requests.get(address)
+                                
+                                not_done_with_Q= False
+                                filename = 'bbm_tone.wav'
+                                data, fs = sf.read(filename, dtype='float32')
+                                # #sd.play(data, fs)
+                                status = sd.wait()
+
+                    
+                                
                                                             
                                                             
-                                                            
+                                                           
 except KeyboardInterrupt:
     print('\nDone')
     parser.exit(0)
