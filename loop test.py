@@ -563,8 +563,8 @@ try:
                     print (jres) 
                     
                     if "hello vivian" in jres["text"]:
-                        address = fr"http://localhost/nlp/vivian.php?trigger=true"
-                        requests.get(address)
+                        # address = fr"http://localhost/nlp/vivian.php?trigger=true"
+                        # requests.get(address)
                         
                         filename = 'Beginning.wav'
                         data, fs = sf.read(filename, dtype='float32')
@@ -682,8 +682,8 @@ try:
                                     q.queue.clear()
 
                             if ("thank you" in jres["text"]) or ("bye" in jres["text"]):
-                                address = fr"http://localhost/nlp/vivian.php?trigger=false"
-                                requests.get(address)
+                                # address = fr"http://localhost/nlp/vivian.php?trigger=false"
+                                # requests.get(address)
                                 
                                 not_done_with_Q= False
                                 filename = 'bbm_tone.wav'
