@@ -603,10 +603,10 @@ try:
 
                                 if adeus_reply.startswith('Which device do you'):
                                     
-                                    speakword(adeus_reply)
+                                    # speakword(adeus_reply)
                                     q.queue.clear()
                                     time.sleep(2)
-                                    while 0: 
+                                    while True: 
                                         data = q.get()
                                         if rec.AcceptWaveform(data):
                                             jres = json.loads(rec.Result())
@@ -630,10 +630,10 @@ try:
                                         
                                         
                                 elif adeus_reply.startswith('How many kilowatts'):
-                                    speakword(adeus_reply)
+                                    # speakword(adeus_reply)
                                     q.queue.clear()
                                     time.sleep(2)
-                                    while 0:
+                                    while True:
                                         data = q.get()
                                         if rec.AcceptWaveform(data):
                                             jres = json.loads(rec.Result())
@@ -658,9 +658,9 @@ try:
                                                 q.queue.clear()
                                                 
                                 elif adeus_reply.startswith('For which period'):
-                                    speakword(adeus_reply)
+                                    # speakword(adeus_reply)
                                     q.queue.clear()
-                                    while 0:          
+                                    while True:          
                                         data = q.get()
                                         rec.AcceptWaveform(data)
                                         jres = json.loads(rec.Result())
