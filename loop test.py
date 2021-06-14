@@ -678,7 +678,7 @@ try:
                                                         
                                                         
                                 else:
-                                    # speakword(adeus_reply)
+                                    speakword(adeus_reply)
                                     q.queue.clear()
 
                             if ("thank you" in jres["text"]) or ("bye" in jres["text"]):
