@@ -549,7 +549,7 @@ try:
                     print (jres) 
                     
                     if ("hello vivian" in jres["text"]) or ("hello" in jres["text"]) or ("vivian" in jres["text"]):
-                        address = fr"http://localhost/nlp/vivian.php?trigger=true"
+                        address = fr"http://localhost/nlp/?trigger=true"
                         requests.get(address)
                         
                         # filename = 'Beginning.wav'
@@ -674,7 +674,7 @@ try:
                                       q.queue.clear()
 
                             if ("thank you" in jres["text"]) or ("bye" in jres["text"]):
-                                address = fr"http://localhost/nlp/vivian.php?trigger=false"
+                                address = fr"http://localhost/nlp/?trigger=false"
                                 requests.get(address)
                                 
                                 not_done_with_Q= False
