@@ -2,7 +2,6 @@ import soundfile as sf
 import argparse 
 import os
 import queue
-import sounddevice as sd
 import vosk
 import sys
 import json
@@ -10,7 +9,6 @@ import pyttsx3
 import wordtodigits
 import pandas as pd
 import numpy as np
-from playsound import playsound
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import requests
